@@ -47,6 +47,50 @@ FROM Tweets
 where LENGTH(content)>15;
 ```
 
+# 6.Replace Employee ID With The Unique Identifier
+
+[Question 6](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/description/?envType=study-plan-v2&envId=top-sql-50)
+
+```sql
+SELECT uni.unique_id,e.name 
+FROM Employees e 
+LEFT JOIN EmployeeUNI AS uni 
+ON e.id=uni.id
+```
+
+# 7.Product Sales Analysis I
+
+[Question 7](https://leetcode.com/problems/product-sales-analysis-i/?envType=study-plan-v2&envId=top-sql-50)
+
+```sql
+SELECT p.product_name, s.year, s.price 
+FROM Sales s 
+INNER JOIN Product p 
+ON s.product_id=p.product_id
+```
+
+# 8.Customer Who Visited but Did Not Make Any Transactions
+
+[Question 8](https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/description/?envType=study-plan-v2&envId=top-sql-50)
+
+```sql
+SELECT v.customer_id, COUNT(v.visit_id) AS count_no_trans 
+FROM Visits V 
+LEFT JOIN  Transactions t 
+ON v.visit_id=t.visit_id
+WHERE t.transaction_id IS NULL 
+GROUP BY v.customer_id
+```
+
+# 9.Rising Temperature
+
+[Question 9](https://leetcode.com/problems/rising-temperature/description/?envType=study-plan-v2&envId=top-sql-50)
+
+```sql
+SELECT W1.id FROM Weather W1,Weather W2
+where DATEDIFF(W1.recordDate,W2.recordDate) = 1 AND W1.temperature > W2.temperature
+```
+
 # 10.Average Time of Process per Machine
 [Question 10](https://leetcode.com/problems/average-time-of-process-per-machine/description/?envType=study-plan-v2&envId=top-sql-50)
 
